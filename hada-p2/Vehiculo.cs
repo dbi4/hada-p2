@@ -66,17 +66,17 @@ namespace Hada
         public EventHandler<TemperaturaMaximaExcedidaArgs> temperaturaMaximaExcedida;
         public EventHandler<CombustibleMinimoExcedidoArgs> combustibleMinimoExcedido;
 
-        public static int maxVelocidad;
-        public static int maxTemperatura;
-        public static int minCombustible;
+        public static int maxVelocidad { get; set; }
+        public static int maxTemperatura { get; set;  }
+        public static int minCombustible { get; set; }
         //preguntar
-        public static Random _rand;
+        //public static Random _rand;
         public static Random rand
         {
-            set { }
+            set { rand.Next(value, value.Next() + 1); }
             private get
             {
-                return rand.Next(); //cuidaddo
+                return rand.; //cuidaddo
             }
         }
         public string nombre
