@@ -31,6 +31,8 @@ namespace Hada
                 List<Vehiculo> vehiculosExcedenMinimoCombustible = new List<Vehiculo>();
                 vehiculosExcedenMinimoCombustible = a.getCochesExcedenMinimoCombustible();
             }
+            string d;
+            Console.Read();
         }
 
         public static bool VehiculoOk()
@@ -59,6 +61,7 @@ namespace Hada
 
             return v.todoOk();
         }
+        
     }
 }
 

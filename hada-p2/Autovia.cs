@@ -31,37 +31,20 @@ namespace Hada
         }
         public bool moverCoches()
         {
-            int i = 0;
+            bool res = false;
             foreach (Vehiculo c in lv)
             {
                 if (c.todoOk())
                 {
                     c.mover();
-                    i++;
+                    res = true;
                 }
             }
-            return (i == 0) ? false : true;
+            return res;
         }
         public void moverCochesEnBucle()
         {
-            int i = 1;
-            while (i>0)
-            {
-                i = 0;
-                foreach (Vehiculo c in lv)
-                {
-                    if (c.todoOk())
-                    {
-                        i++;
-                    }
-                }
-                if (i > 0)
-                {
-                    this.moverCoches();
-                }
-            }
-            
-            
+            while (this.moverCoches()) ;
         }
         public List<Vehiculo> getCochesExcedenLimiteVelocidad()
         {

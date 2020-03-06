@@ -69,25 +69,19 @@ namespace Hada
         public static int maxVelocidad { get; set; }
         public static int maxTemperatura { get; set;  }
         public static int minCombustible { get; set; }
-        //preguntar
-        //public static Random _rand;
+      
         public static Random rand
-        {
-            set { rand.Next(value, value.Next() + 1); }
-            private get
-            {
-                return rand.; //cuidaddo
-            }
-        }
+        { get; set; }
+        private string _nombre;
         public string nombre
         {
             get
             {
-                return nombre;
+                return _nombre;
             }
             private set
             {
-                nombre = value;
+                _nombre = value;
             }
         }
         private int _velocidad;
@@ -101,6 +95,7 @@ namespace Hada
                     EventHandler<VelocidadMaximaExcedidaArgs> ev = velocidadMaximaExcedida;
                     if (ev != null)
                     {
+                        _velocidad = value;
                         ev(this, new VelocidadMaximaExcedidaArgs(value));
                         
                     }
@@ -131,6 +126,7 @@ namespace Hada
                     EventHandler<TemperaturaMaximaExcedidaArgs> ev = temperaturaMaximaExcedida;
                     if (ev != null)
                     {
+                        _temperatura = value;
                         ev(this, new TemperaturaMaximaExcedidaArgs(value));
                         //tem.Add(this);
                     }
@@ -156,6 +152,7 @@ namespace Hada
                     EventHandler<CombustibleMinimoExcedidoArgs> ev = combustibleMinimoExcedido;
                     if (ev != null)
                     {
+                        _combustible = value;
                         ev(this, new CombustibleMinimoExcedidoArgs(value));
                         //com.Add(this);
                     }
@@ -185,11 +182,6 @@ namespace Hada
             this.nombre = nombre;
             this.temperatura = temperatura;
             this.combustible = combustible;
-            //Aqui se connecta el evento con el manejador
-            /*
-             Vehiculo v = new ...
-             v.velocidad maxima event...
-             */
         }
         public void incVelocidad()
         {
@@ -205,7 +197,7 @@ namespace Hada
         }
         public bool todoOk()
         {
-            return (temperatura <= maxTemperatura && combustible >= minCombustible) ? true : false;
+            return (temperatura <= maxTemperatura && combustible >= minCombustible);
         }
         public void mover()
         {
@@ -219,7 +211,7 @@ namespace Hada
         override public string ToString()
         {
             string res = "[" + nombre + "] Velocidad:" + velocidad + " km/h; Temperatura: " + temperatura + " ºC; Combustible: " + combustible + " %;Ok: ";
-            //(this.todoOk()) ? res += "True" : res += "False";
+            
             if (this.todoOk())
             {
                 res += "True";
