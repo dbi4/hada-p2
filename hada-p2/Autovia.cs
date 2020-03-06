@@ -46,6 +46,13 @@ namespace Hada
         {
             while (this.moverCoches()) ;
         }
+        //*************************************************************
+        //BORRAR
+        public List<Vehiculo> getCoches()
+        {
+            return new List<Vehiculo>(lv);
+        }
+        //*************************************************************
         public List<Vehiculo> getCochesExcedenLimiteVelocidad()
         {
             return new List<Vehiculo>(vel);
@@ -60,7 +67,7 @@ namespace Hada
         }
         override public string ToString()
         {
-            string res = "[Autivía] Exceso velocidad: ";
+            string res = "[Autovía] Exceso velocidad: ";
             res += vel.Count;
             res += ", Exceso temperatura: ";
             res += tem.Count;
@@ -76,7 +83,7 @@ namespace Hada
             res += v.nombre;
             res += "\nVelocidad: ";
             res += e.velocidad;
-            res += " ºC";
+            res += " km/h";
             if (!vel.Contains(v))
             {
                 vel.Add(v);
@@ -90,7 +97,7 @@ namespace Hada
             res += v.nombre;
             res += "\nTemperatura: ";
             res += e.temperatura;
-            res += " km/h";
+            res += " ºC";
             if (!tem.Contains(v))
             {
                 tem.Add(v);

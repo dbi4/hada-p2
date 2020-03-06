@@ -71,7 +71,7 @@ namespace Hada
         public static int minCombustible { get; set; }
       
         public static Random rand
-        { get; set; }
+        { private get; set; }
         private string _nombre;
         public string nombre
         {
@@ -210,7 +210,7 @@ namespace Hada
         }
         override public string ToString()
         {
-            string res = "[" + nombre + "] Velocidad:" + velocidad + " km/h; Temperatura: " + temperatura + " ºC; Combustible: " + combustible + " %;Ok: ";
+            string res = "[" + nombre + "] Velocidad: " + velocidad + " km/h; Temperatura: " + temperatura + " ºC; Combustible: " + combustible + " %; Ok: ";
             
             if (this.todoOk())
             {

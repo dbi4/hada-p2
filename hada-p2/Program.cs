@@ -20,6 +20,15 @@ namespace Hada
             {
                 Autovia a = new Autovia(4);
                 Console.WriteLine(a);
+                //-------------------
+                Console.WriteLine();
+                Console.WriteLine("VEHICULOS INICIALIZADOS");
+                List<Vehiculo> lvh = a.getCoches();
+                foreach(Vehiculo vh in lvh)
+                {
+                    Console.WriteLine(vh.ToString());
+                }
+                //-----------------------
                 if (a.moverCoches())
                 {
                     a.moverCochesEnBucle();
@@ -30,9 +39,47 @@ namespace Hada
                 vehiculosExcedenLimiteTemperatura = a.getCochesExcedenLimiteTemperatura();
                 List<Vehiculo> vehiculosExcedenMinimoCombustible = new List<Vehiculo>();
                 vehiculosExcedenMinimoCombustible = a.getCochesExcedenMinimoCombustible();
+                //------------------------
+                Console.WriteLine();
+                Console.WriteLine("VEHICULOS EXCEDEN LIMITE DE VELOCIDAD");
+                List<Vehiculo> ev = a.getCochesExcedenLimiteVelocidad();
+                foreach (Vehiculo vh in ev)
+                {
+                    Console.WriteLine(vh.ToString());
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("VEHICULOS EXCEDEN LIMITE DE TEMPERATURA");
+                List<Vehiculo> et = a.getCochesExcedenLimiteTemperatura();
+                foreach (Vehiculo vh in et)
+                {
+                    Console.WriteLine(vh.ToString());
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("VEHICULOS EXCEDEN LIMITE DE COMBUSTIBLE");
+                List<Vehiculo> ec = a.getCochesExcedenMinimoCombustible();
+                foreach (Vehiculo vh in ec)
+                {
+                    Console.WriteLine(vh.ToString());
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("VEHICULOS INICIALIZADOS");
+                List<Vehiculo> lvh2 = a.getCoches();
+                foreach (Vehiculo vh in lvh2)
+                {
+                    Console.WriteLine(vh.ToString());
+                }
+                Console.WriteLine();
+                Console.WriteLine("AUTOVIA");
+                
+                Console.WriteLine(a);
+                //-------------------
             }
-            string d;
+            //------------------
             Console.Read();
+            //-------------------
         }
 
         public static bool VehiculoOk()
