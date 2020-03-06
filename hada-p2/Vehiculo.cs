@@ -92,10 +92,10 @@ namespace Hada
                 if (value > maxVelocidad)
                 {
                     //disparar el evento velocidadMaximaExcedida
+                    _velocidad = value;
                     EventHandler<VelocidadMaximaExcedidaArgs> ev = velocidadMaximaExcedida;
                     if (ev != null)
                     {
-                        _velocidad = value;
                         ev(this, new VelocidadMaximaExcedidaArgs(value));
                         
                     }
@@ -123,12 +123,11 @@ namespace Hada
                 if (value > maxTemperatura)
                 {
                     //disparar el evento velocidadMaximaExcedida
+                    _temperatura = value;
                     EventHandler<TemperaturaMaximaExcedidaArgs> ev = temperaturaMaximaExcedida;
                     if (ev != null)
                     {
-                        _temperatura = value;
                         ev(this, new TemperaturaMaximaExcedidaArgs(value));
-                        //tem.Add(this);
                     }
                 }
                 else
@@ -149,10 +148,10 @@ namespace Hada
                 if (value < minCombustible)
                 {
                     //disparar el evento combiustibleMinimoExcedido
+                    _combustible = value;
                     EventHandler<CombustibleMinimoExcedidoArgs> ev = combustibleMinimoExcedido;
                     if (ev != null)
                     {
-                        _combustible = value;
                         ev(this, new CombustibleMinimoExcedidoArgs(value));
                         //com.Add(this);
                     }
@@ -171,9 +170,6 @@ namespace Hada
                 }
             }
         }
-
-        //
-        //protected virtual void 
 
 
         public Vehiculo(string nombre, int velocidad, int temperatura, int combustible)
