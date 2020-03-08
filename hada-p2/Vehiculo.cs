@@ -60,8 +60,7 @@ namespace Hada
 
     public class Vehiculo
     {
-        //EVENTOS VelocidadMaximaExcedidaArgs TemperaturaMaximaExcedidaArgs CombustibleMinimoExcedidaArgs
-        // velocidadMaximaExcedida temperaturaMaximaExcedida combustibleMinimoExcedida
+        
         public event EventHandler<VelocidadMaximaExcedidaArgs> velocidadMaximaExcedida;
         public event EventHandler<TemperaturaMaximaExcedidaArgs> temperaturaMaximaExcedida;
         public event EventHandler<CombustibleMinimoExcedidoArgs> combustibleMinimoExcedido;
@@ -91,18 +90,7 @@ namespace Hada
         {
             set
             {
-                if (value > maxVelocidad)
-                {
-                    //disparar el evento velocidadMaximaExcedida
-                    _velocidad = value;
-                    EventHandler<VelocidadMaximaExcedidaArgs> ev = velocidadMaximaExcedida;
-                    if (ev != null)
-                    {
-                        ev(this, new VelocidadMaximaExcedidaArgs(value));
-                        
-                    }
-                }
-                else if (value <= 0)
+                if (value <= 0)
                 {
                     _velocidad = 0;
                 }
@@ -110,7 +98,15 @@ namespace Hada
                 {
                     _velocidad = value;
                 }
+                if (value > maxVelocidad)
+                {
+                    EventHandler<VelocidadMaximaExcedidaArgs> ev = velocidadMaximaExcedida;
+                    if (ev != null)
+                    {
+                        ev(this, new VelocidadMaximaExcedidaArgs(_velocidad));
 
+                    }
+                }
             }
 
             get { return _velocidad; }
@@ -123,19 +119,14 @@ namespace Hada
 
             set
             {
+                _temperatura = value;
                 if (value > maxTemperatura)
-                {
-                    //disparar el evento velocidadMaximaExcedida
-                    _temperatura = value;
+                {   
                     EventHandler<TemperaturaMaximaExcedidaArgs> ev = temperaturaMaximaExcedida;
                     if (ev != null)
                     {
-                        ev(this, new TemperaturaMaximaExcedidaArgs(value));
+                        ev(this, new TemperaturaMaximaExcedidaArgs(_temperatura));
                     }
-                }
-                else
-                {
-                    _temperatura = value;
                 }
             }
 
@@ -148,17 +139,7 @@ namespace Hada
             get { return _combustible; }
             set
             {
-                if (value < minCombustible)
-                {
-                    //disparar el evento combiustibleMinimoExcedido
-                    _combustible = value;
-                    EventHandler<CombustibleMinimoExcedidoArgs> ev = combustibleMinimoExcedido;
-                    if (ev != null)
-                    {
-                        ev(this, new CombustibleMinimoExcedidoArgs(value));
-                    }
-                }
-                else if (value <= 0)
+                if (value <= 0)
                 {
                     _combustible = 0;
                 }
@@ -169,6 +150,14 @@ namespace Hada
                 else
                 {
                     _combustible = value;
+                }
+                if (value < minCombustible)
+                {
+                    EventHandler<CombustibleMinimoExcedidoArgs> ev = combustibleMinimoExcedido;
+                    if (ev != null)
+                    {
+                        ev(this, new CombustibleMinimoExcedidoArgs(_combustible));
+                    }
                 }
             }
         }
@@ -183,17 +172,17 @@ namespace Hada
 
         public void incVelocidad()
         {
-            velocidad += rand.Next(1,7+1);//ciudado
+            velocidad += rand.Next(1,7+1);
         }
 
         public void incTemperatura()
         {
-            temperatura += rand.Next(1, 5 + 1);//cuidado
+            temperatura += rand.Next(1, 5 + 1);
         }
 
         public void decCombustible()
         {
-            combustible -= rand.Next(1, 5 + 1);//cuidado
+            combustible -= rand.Next(1, 5 + 1);
         }
 
         public bool todoOk()

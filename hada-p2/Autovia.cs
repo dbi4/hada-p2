@@ -20,14 +20,12 @@ namespace Hada
                 int c, t, ve;
                 ve = c = t = 50;
                 Vehiculo v = new Vehiculo(n, ve, t, c);
-                // velocidadMaximaExcedida temperaturaMaximaExcedida combustibleMinimoExcedida
+               
                 v.velocidadMaximaExcedida += cuandoVelocidadMaximaExcedida;
                 v.temperaturaMaximaExcedida += cuandoTemperaturaMaximaExcedida;
                 v.combustibleMinimoExcedido += cuandoCombustibleMinimoExcedido;
                 lv.Add(v);
             }
-            //Conectar los manejadores
-
         }
         public bool moverCoches()
         {
@@ -46,13 +44,6 @@ namespace Hada
         {
             while (this.moverCoches()) ;
         }
-        //*************************************************************
-        //BORRAR
-        public List<Vehiculo> getCoches()
-        {
-            return new List<Vehiculo>(lv);
-        }
-        //*************************************************************
         public List<Vehiculo> getCochesExcedenLimiteVelocidad()
         {
             return new List<Vehiculo>(vel);
@@ -73,13 +64,19 @@ namespace Hada
             res += tem.Count;
             res += ", Déficit combustible: ";
             res += com.Count;
+            res += "\n";
+            for (int i = 0; i < lv.Count; i++)
+            {
+                res += lv[i].ToString();
+                res += "\n";
+            }
             return res;
         }
-        //VelocidadMaximaExcedidaArgs TemperaturaMaximaExcedidaArgs CombustibleMinimoExcedidaArgs
+        
         private void cuandoVelocidadMaximaExcedida(Object s, VelocidadMaximaExcedidaArgs e)
         {
             Vehiculo v = (Vehiculo)s;
-            string res = "¡¡Velocidad máxima excedida!!\nVehiculo: "; //+ nombrecoche;
+            string res = "¡¡Velocidad máxima excedida!!\nVehiculo: ";
             res += v.nombre;
             res += "\nVelocidad: ";
             res += e.velocidad;
@@ -93,7 +90,7 @@ namespace Hada
         private void cuandoTemperaturaMaximaExcedida(Object s, TemperaturaMaximaExcedidaArgs e)
         {
             Vehiculo v = (Vehiculo)s;
-            string res = "¡¡Temperatura máxima excedida!!\nVehiculo: "; //+ nombrecoche;
+            string res = "¡¡Temperatura máxima excedida!!\nVehiculo: ";
             res += v.nombre;
             res += "\nTemperatura: ";
             res += e.temperatura;
@@ -107,7 +104,7 @@ namespace Hada
         private void cuandoCombustibleMinimoExcedido(Object s, CombustibleMinimoExcedidoArgs e)
         {
             Vehiculo v = (Vehiculo)s;
-            string res = "¡¡Combustible mínimo excedido!!\nVehiculo: "; //+ nombrecoche;
+            string res = "¡¡Combustible mínimo excedido!!\nVehiculo: ";
             res += v.nombre;
             res += "\nCombustible: ";
             res += e.combustible;

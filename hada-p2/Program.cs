@@ -22,12 +22,12 @@ namespace Hada
                 Console.WriteLine(a);
                 //-------------------
                 Console.WriteLine();
-                Console.WriteLine("VEHICULOS INICIALIZADOS");
-                List<Vehiculo> lvh = a.getCoches();
-                foreach(Vehiculo vh in lvh)
+                //Console.WriteLine("VEHICULOS INICIALIZADOS");
+                //List<Vehiculo> lvh = a.getCoches();
+                /*foreach(Vehiculo vh in lvh)
                 {
                     Console.WriteLine(vh.ToString());
-                }
+                }*/
                 //-----------------------
                 if (a.moverCoches())
                 {
@@ -64,13 +64,13 @@ namespace Hada
                     Console.WriteLine(vh.ToString());
                 }
 
-                Console.WriteLine();
+                /*Console.WriteLine();
                 Console.WriteLine("VEHICULOS INICIALIZADOS");
                 List<Vehiculo> lvh2 = a.getCoches();
                 foreach (Vehiculo vh in lvh2)
                 {
                     Console.WriteLine(vh.ToString());
-                }
+                }*/
                 Console.WriteLine();
                 Console.WriteLine("AUTOVIA");
                 
